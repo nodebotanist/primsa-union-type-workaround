@@ -8,36 +8,45 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+  relationMode = "foreignKeys"
 }
 
-model StudentUser {
+model StudentOrInstructorUser {
   id            Int @id @default(autoincrement())
   email         String
   first_name    String
   last_name     String
-  major         String
+  user_type     String @default("Student")
+  major         String?
+  field_of_study  String?
+  login_records LogOnRecord[]
 }
 
-model InstructorUser {
-  id              Int @id @default(autoincrement())
-  email           String
-  first_name      String
-  last_name       String
-  field_of_study  String
+model LogOnRecord {
+  id        Int @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  user      StudentOrInstructorUser @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId    Int
+
+  @@index([id])
 }
 
 model Post {
   id    Int    @id @default(autoincrement())
-  title String
+  title String  
+  tags  Tag[]
 }
 
 model Page {
   id    Int    @id @default(autoincrement())
   title String
+  tags  Tag[]
 }
 
 model Tag {
   id           Int          @id @default(autoincrement())
+  taggedPage   Page @relation(fields: [taggableId], references: [id], onDelete: Cascade, onUpdate: Cascade) 
+  taggedPost   Post @relation(fields: [taggableId], references: [id], onDelete: Cascade, onUpdate: Cascade )
   taggableId   Int
   taggableType String
 }

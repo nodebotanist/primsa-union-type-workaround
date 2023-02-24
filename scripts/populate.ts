@@ -8,7 +8,8 @@ async function main() {
             email: "alex@test.edu",
             first_name: "Alex",
             last_name: "Test",
-            major: "Undecided"
+            major: "Undecided",
+            user_type: "Student"
         }
     })
     await prisma.studentOrInstructorUser.create({
@@ -16,7 +17,8 @@ async function main() {
             email: "sam@test.edu",
             first_name: "Sam",
             last_name: "Test",
-            major: "Environmental Studies"
+            major: "Environmental Studies",
+            user_type: "Student"
         }
     })
     await prisma.studentOrInstructorUser.create({
@@ -24,33 +26,37 @@ async function main() {
             email: "apollo@test.edu",
             first_name: "Apollo",
             last_name: "Test",
-            major: "Feline Studies"
+            major: "Feline Studies",
+            user_type: "Student"
         }
     })
     
     
-    await prisma.instructorUser.create({
+    await prisma.studentOrInstructorUser.create({
         data: {
             email: "crane@test.edu",
             first_name: "Crane",
             last_name: "Test",
-            field_of_study: "Mathematics"
+            field_of_study: "Mathematics",
+            user_type: "Instructor"
         }
     })
-    await prisma.instructorUser.create({
+    await prisma.studentOrInstructorUser.create({
         data: {
             email: "sagan@test.edu",
             first_name: "Sagan",
             last_name: "Test",
-            field_of_study: "Astronomy"
+            field_of_study: "Astronomy",
+            user_type: "Instructor"
         }
     })
-    await prisma.instructorUser.create({
+    await prisma.studentOrInstructorUser.create({
         data: {
             email: "testabel@test.edu",
             first_name: "Testabel",
             last_name: "Test",
-            field_of_study: "Quality Assurance"
+            field_of_study: "Quality Assurance",
+            user_type: "Instructor"
         }
     })
 }
