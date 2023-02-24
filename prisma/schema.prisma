@@ -27,3 +27,19 @@ model InstructorUser {
   last_name       String
   field_of_study  String
 }
+
+model Post {
+  id    Int    @id @default(autoincrement())
+  title String
+}
+
+model Page {
+  id    Int    @id @default(autoincrement())
+  title String
+}
+
+model Tag {
+  id           Int          @id @default(autoincrement())
+  taggableId   Int
+  taggableType String
+}
