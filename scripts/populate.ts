@@ -1,24 +1,37 @@
 import { PrismaClient } from '@prisma/client'
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
 
 const prisma = new PrismaClient()
 
 async function main() {
+    //clean out db entries
+    await prisma.studentOrInstructorUser.deleteMany({})
+    await prisma.logOnRecord.deleteMany({})
+
+    //create new database entries
     await prisma.studentOrInstructorUser.create({
         data: {
             email: "alex@test.edu",
             first_name: "Alex",
             last_name: "Test",
             major: "Undecided",
-            user_type: "Student"
+            user_type: "Student",
+            login_records: {
+                create: [{}, {}, {}]
+            }
         }
     })
+
     await prisma.studentOrInstructorUser.create({
         data: {
             email: "sam@test.edu",
             first_name: "Sam",
             last_name: "Test",
             major: "Environmental Studies",
-            user_type: "Student"
+            user_type: "Student",
+            login_records: {
+                create: [{}, {}, {}]
+            }
         }
     })
     await prisma.studentOrInstructorUser.create({
@@ -27,7 +40,10 @@ async function main() {
             first_name: "Apollo",
             last_name: "Test",
             major: "Feline Studies",
-            user_type: "Student"
+            user_type: "Student",
+            login_records: {
+                create: [{}, {}, {}]
+            }
         }
     })
     
@@ -38,7 +54,10 @@ async function main() {
             first_name: "Crane",
             last_name: "Test",
             field_of_study: "Mathematics",
-            user_type: "Instructor"
+            user_type: "Instructor",
+            login_records: {
+                create: [{}, {}, {}]
+            }
         }
     })
     await prisma.studentOrInstructorUser.create({
@@ -47,7 +66,10 @@ async function main() {
             first_name: "Sagan",
             last_name: "Test",
             field_of_study: "Astronomy",
-            user_type: "Instructor"
+            user_type: "Instructor",
+            login_records: {
+                create: [{}, {}, {}]
+            }
         }
     })
     await prisma.studentOrInstructorUser.create({
@@ -56,7 +78,10 @@ async function main() {
             first_name: "Testabel",
             last_name: "Test",
             field_of_study: "Quality Assurance",
-            user_type: "Instructor"
+            user_type: "Instructor",
+            login_records: {
+                create: [{}, {}, {}]
+            }
         }
     })
 }
