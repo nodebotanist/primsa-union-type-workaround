@@ -101,11 +101,7 @@ async function main() {
         data: {
             title: "My Blog Post",
             tags: {
-                create: [
-                    {},
-                    {},
-                    {}
-                ]
+                create: [{}, {}, {}]
             }
         }
     })
