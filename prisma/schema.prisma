@@ -19,10 +19,10 @@ model StudentOrInstructorUser {
   user_type     String @default("Student")
   major         String?
   field_of_study  String?
-  login_records LogOnRecord[]
+  login_records LoginRecord[]
 }
 
-model LogOnRecord {
+model LoginRecord {
   id        Int @id @default(autoincrement())
   timestamp DateTime @default(now())
   user      StudentOrInstructorUser @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)

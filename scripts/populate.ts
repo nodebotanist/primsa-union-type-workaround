@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 async function main() {
     //clean out db entries
     await prisma.studentOrInstructorUser.deleteMany({})
-    await prisma.logOnRecord.deleteMany({})
+    await prisma.loginRecord.deleteMany({})
     await prisma.page.deleteMany({})
     await prisma.post.deleteMany({})
     await prisma.tag.deleteMany({})
