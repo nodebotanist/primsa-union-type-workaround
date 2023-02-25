@@ -48,5 +48,4 @@ model Tag {
   taggedPage   Page? @relation(fields: [taggableId], references: [id], onDelete: Cascade, onUpdate: Cascade) 
   taggedPost   Post? @relation(fields: [taggableId], references: [id], onDelete: Cascade, onUpdate: Cascade )
   taggableId   Int?
-  taggableType String
 }

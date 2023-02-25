@@ -90,7 +90,23 @@ async function main() {
 
     await prisma.page.create({
         data:{
-            title: "Home Page"
+            title: "Home Page",
+            tags: {
+                create: [{}, {}, {}]
+            }
+        }
+    })
+
+    await prisma.post.create({
+        data: {
+            title: "My Blog Post",
+            tags: {
+                create: [
+                    {},
+                    {},
+                    {}
+                ]
+            }
         }
     })
 }
