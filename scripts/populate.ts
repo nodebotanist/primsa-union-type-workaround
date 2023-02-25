@@ -7,6 +7,9 @@ async function main() {
     //clean out db entries
     await prisma.studentOrInstructorUser.deleteMany({})
     await prisma.logOnRecord.deleteMany({})
+    await prisma.page.deleteMany({})
+    await prisma.post.deleteMany({})
+    await prisma.tag.deleteMany({})
 
     //create new database entries
     await prisma.studentOrInstructorUser.create({
@@ -82,6 +85,12 @@ async function main() {
             login_records: {
                 create: [{}, {}, {}]
             }
+        }
+    })
+
+    await prisma.page.create({
+        data:{
+            title: "Home Page"
         }
     })
 }
