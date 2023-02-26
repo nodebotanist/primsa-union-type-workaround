@@ -33,13 +33,15 @@ model LoginRecord {
 
 model Post {
   id    Int    @id @default(autoincrement())
-  title String  
+  title String 
+  type String @default("Post") 
   tags  Tag[]
 }
 
 model Page {
   id    Int    @id @default(autoincrement())
   title String
+  type String @default("Page")
   tags  Tag[]
 }
 
