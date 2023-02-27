@@ -7,9 +7,6 @@ async function main() {
     //clean out db entries
     await prisma.studentOrInstructorUser.deleteMany({})
     await prisma.loginRecord.deleteMany({})
-    await prisma.page.deleteMany({})
-    await prisma.post.deleteMany({})
-    await prisma.tag.deleteMany({})
 
     //create new database entries
     await prisma.studentOrInstructorUser.create({
@@ -84,24 +81,6 @@ async function main() {
             user_type: "Instructor",
             login_records: {
                 create: [{}, {}, {}]
-            }
-        }
-    })
-
-    await prisma.page.create({
-        data:{
-            title: "Home Page",
-            tags: {
-                create: [{}]
-            },
-        }
-    })
-
-    await prisma.post.create({
-        data: {
-            title: "My Blog Post",
-            tags: {
-                create: [{}]
             }
         }
     })
