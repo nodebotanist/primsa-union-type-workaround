@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
 
 const prisma = new PrismaClient()
 

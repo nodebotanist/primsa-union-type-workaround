@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -38,16 +38,14 @@ async function main() {
             user_type: "Student"
         }
     })
-    console.log(students)
 
     let instructors: Instructor[] = await prisma.studentOrInstructorUser.findMany({
         where: {
             user_type: "Instructor"
         }
     })
-    console.log(instructors)
-    // ue the createLoginRecord function 
 
+    // use the createLoginRecord function 
     students.forEach((student: Student) => {
         createLoginRecord(student)
     })
